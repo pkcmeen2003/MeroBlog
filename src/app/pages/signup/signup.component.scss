@@ -1,19 +1,8 @@
-
-<style>
-  :host {
-  
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-    
-    
-  }
-
-  .main {
+.main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 100px;
+    height: 100vh;
     background-color: #f0f2f5;
   }
   
@@ -28,29 +17,44 @@
   }
   
   h2 {
-    margin-bottom: 1px;
+    margin-bottom: 10px;
     font-size: 24px;
   }
   
+  p {
+    margin-bottom: 20px;
+    color: #555;
+  }
   
-  
- 
+  .form-group {
+    margin-bottom: 20px;
+  }
   
   label {
     font-size: 14px;
     font-weight: bold;
-    margin-bottom: 0px;
+    margin-bottom: 8px;
     display: block;
     text-align: left;
   }
   
- 
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
   
   input::placeholder {
     color: #888;
   }
   
- 
+  .form-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
   
   .signup-btn {
     background-color: #42b72a;
@@ -74,22 +78,10 @@
   .login-link:hover {
     color: darkblue;
   }
+  .account-heading {
+    color: blue; 
+    transition: color 0.3s; 
+  }
   
-</style>
-
-<main class="main">
-  <div class="content">
-    <div class="left-side">
-      <h1 style="color: blue; font-family: 'Times New Roman', Times, serif;">Hello, {{ title }}</h1>
-      <h4 style="color: grey; font-family: 'Times New Roman', Times, serif;">
-        <p>To view MeroBlog, please log. If this is your first visit, please sign up to get all the latest blogs.</p>
-      </h4>
-    </div>
-    <div class="divider" role="separator" aria-label="Divider"></div>
-    <div class="right-side"></div>
-  </div>
-</main>
-
-
-
-<router-outlet />
+ 
+  
