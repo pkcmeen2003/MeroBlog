@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/signup']);
   }
 } 
+//==================This is alternative codes===================
  /* 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
