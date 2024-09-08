@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
   }
 } 
 //==================This is alternative codes===================
-//==================Just saving as plan B=======================
  /* 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
