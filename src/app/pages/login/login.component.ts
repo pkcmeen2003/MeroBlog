@@ -15,7 +15,10 @@ export class LoginComponent implements OnInit {
   
   loginForm: FormGroup;  
 
-  constructor(private formBuilder: FormBuilder, private router:  Router, private userService: UserService) {}
+  constructor(
+    private formBuilder: FormBuilder, 
+    private router:  Router, 
+    private userService: UserService) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -31,7 +34,8 @@ export class LoginComponent implements OnInit {
       next: (user: User) => {
         if (user.id) {  
           alert('Login success');
-          // Navigate to another page if necessary
+          // Navigate to the home page
+          this.router.navigate(['/home'])
         } else {
           alert('Invalid username or password');
         }
@@ -46,6 +50,8 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/signup']);
   }
 } 
+
+
 //==================This is alternative codes===================
  /* 
 import { Component, OnInit } from '@angular/core';
