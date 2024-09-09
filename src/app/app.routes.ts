@@ -7,11 +7,11 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 
 export const routes: Routes = [
 
-    { path: 'login', component: LoginComponent }, 
-    { path: 'signup', component: SignupComponent }, // Route for Signup 
-    { path: 'home', component: HomePageComponent }, //Redirect to home page. 
-    { path: '', redirectTo: '/login', pathMatch: 'full' },   // Redirect to '/signin' if no other route matches
-    { path: '**', redirectTo: '/login' }
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'home', component: HomePageComponent },  // HomePage route
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login' }
     
 ];
 

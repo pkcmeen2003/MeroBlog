@@ -1,1 +1,30 @@
-<p>home-page works!</p>
+<div class="container">
+    <header>
+      <h1>Mero Blog</h1>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Categories</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+    <main class="main-content">
+      <!-- Blog Posts Section -->
+      <div class="blog-posts">
+        <div *ngFor="let post of posts" class="post">
+          <h2>{{ post.title }}</h2>
+          <p>{{ post.summary }}</p>
+          <p><strong>Author:</strong> {{ post.author }}</p>
+          <p><strong>Date:</strong> {{ post.date }}</p>
+        </div>
+      </div>
+    
+      <!-- Categories Section -->
+      <aside class="categories">
+        <h3>Categories</h3>
+        <ul>
+          <li *ngFor="let category of categories">{{ category }}</li>
+        </ul>
+      </aside>
+    </main>
+    </div>
