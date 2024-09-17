@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/posts")
+@CrossOrigin(origins = "http://localhost:4200")
 public class BlogPostController {
     private final BlogPostService blogPostService;
 
@@ -28,7 +29,7 @@ public class BlogPostController {
     //Creating users
     // URL:  http://localhost:8080/api/posts
     @PostMapping
-    public ResponseEntity<String>createBlogPost(@RequestBody BlogPost blogPost){
+    public ResponseEntity<String>saveBlogPost(@RequestBody BlogPost blogPost){
         BlogPost newbp = blogPostService.saveBlogPost(blogPost);
        return ResponseEntity.status(HttpStatus.CREATED).body("Blog post details added successfully");
 
