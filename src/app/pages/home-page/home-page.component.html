@@ -1,30 +1,36 @@
 <div class="container">
-    <header>
-      <h1>Mero Blog</h1>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">Categories</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-      </nav>
-    </header>
-    <main class="main-content">
-      <!-- Blog Posts Section -->
-      <div class="blog-posts">
-        <div *ngFor="let post of posts" class="post">
-          <h2>{{ post.title }}</h2>
-          <p>{{ post.summary }}</p>
-          <p><strong>Author:</strong> {{ post.author }}</p>
-          <p><strong>Date:</strong> {{ post.date }}</p>
+  <header>
+    <h1>Mero Blog</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Categories</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="https://www.linkedin.com/in/m-khatri-58638a155/">LinkedIn</a>
+      <a href="#">Facebook</a>
+    </nav>
+  </header>
+  
+  <main class="main-content">
+    <!-- Blog Posts Section -->
+    <div class="blogs-main-page-articles">
+      <div *ngFor="let post of articles" class="article">
+        <h2>{{ post.title }}</h2>
+        <p>By: {{ post.fullName }} | Date: {{ post.createdDate | date:'longDate' }}</p>
+        
+        <!-- Display summary and toggle the full article -->
+        <p *ngIf="!post.showFullArticle">{{ post.content | slice: 0:150 }}...</p>
+        
+        <!-- Toggle the full article visibility -->
+        <button (click)="toggleFullArticle(post)">
+          {{ post.showFullArticle ? 'Hide Full Article' : 'Read Full Article' }}
+        </button>
+  
+        <!-- Display full article content if showFullArticle is true -->
+        <div *ngIf="post.showFullArticle">
+          <div [innerHTML]="post.content"></div>
         </div>
       </div>
-    
-      <!-- Categories Section -->
-      <aside class="categories">
-        <h3>Categories</h3>
-        <ul>
-          <li *ngFor="let category of categories">{{ category }}</li>
-        </ul>
-      </aside>
-    </main>
     </div>
+  </main>
+</div>
