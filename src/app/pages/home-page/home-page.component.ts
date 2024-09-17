@@ -1,37 +1,39 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { BlogPost } from '../../models/BlogPost';
+import { blogPostService } from '../../services/blogPost.service';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  styleUrls: ['./home-page.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HomePageComponent implements OnInit {
-  posts = [
-    {
-      title: 'Welcome to My Blog',
-      summary: 'This is the first post on my blog. Stay tuned for more!',
-      author: 'John Doe',
-      date: 'September 10, 2024'
-    },
-    {
-      title: 'Understanding Angular Basics',
-      summary: 'Angular is a powerful framework for building single-page applications.',
-      author: 'Jane Smith',
-      date: 'September 5, 2024'
-    },
-    {
-      title: 'Building Your First Application with Angular',
-      summary: 'Let’s walk through the steps to build your first Angular application.',
-      author: 'John Doe',
-      date: 'August 30, 2024'
-    }
-  ];
-categories: any;
+  articles: (BlogPost & { showFullArticle: boolean })[] = [];  // Ensure 'showFullArticle' is required
+
+  constructor(private blogPostService: blogPostService) {}
 
   ngOnInit(): void {
-    // Initialization logic for the home page
+    this.fetchAllPosts();
+  }
+  fetchAllPosts(): void {
+    this.blogPostService.getAllBlogPosts().subscribe(
+      (data) => {
+        this.articles = data.map((post) => ({
+          ...post,
+          showFullArticle: false // Ensure 'showFullArticle' is always added
+        }));
+      },
+      (error) => {
+        console.error('Error fetching blog posts:', error);
+      }
+    );
+  }
+
+  toggleFullArticle(post: BlogPost & { showFullArticle: boolean }): void {
+    post.showFullArticle = !post.showFullArticle;
   }
 }
