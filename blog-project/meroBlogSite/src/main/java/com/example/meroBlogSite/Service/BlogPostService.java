@@ -13,4 +13,6 @@ public interface BlogPostService {
     boolean deleteBlogPostById(Long id);
 
     String deleteBlogPostByAuthorId(Long authorId);
+
+    void updateBlogPost(Long id, BlogPost updatedBlogPost);
 }

@@ -56,4 +56,22 @@ public class BlogPostController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ID "+ id + " not found");
         }
     }
+    // URL:  http://localhost:8080/api/posts/{id}
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateBlogPost(@PathVariable Long id, @RequestBody BlogPost updatedBlogPost) {
+        Optional<BlogPost> existingBlogPost = blogPostService.getBlogPostById(id);
+
+        if (existingBlogPost.isPresent()) {
+            BlogPost existingPost = existingBlogPost.get();
+            existingPost.setTitle(updatedBlogPost.getTitle());
+            existingPost.setContent(updatedBlogPost.getContent());
+            existingPost.setFullName(updatedBlogPost.getFullName());
+            existingPost.setAuthorId(updatedBlogPost.getAuthorId());
+            existingPost.setCreatedDate(updatedBlogPost.getCreatedDate());
+            blogPostService.updateBlogPost(id, existingPost);
+            return ResponseEntity.ok("BlogPost updated successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Blog post with id " + id + " not found");
+        }
+    }
 }
