@@ -17,6 +17,10 @@
       <div *ngFor="let post of articles" class="article">
         <h2>{{ post.title }}</h2>
         <p>By: {{ post.fullName }} | Date: {{ post.createdDate | date:'longDate' }}</p>
+         <!-- Edit Mode Toggle -->
+         <span class="edit-text" (click)="post.isEditing = !post.isEditing">
+          {{ post.isEditing ? 'Cancel' : 'Edit' }}
+         </span>
         
         <!-- Display summary and toggle the full article -->
         <p *ngIf="!post.showFullArticle">{{ post.content | slice: 0:150 }}...</p>
