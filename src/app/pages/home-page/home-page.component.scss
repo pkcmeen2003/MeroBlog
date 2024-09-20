@@ -8,7 +8,15 @@ container {
     
       background-color: #eae7e9 !important;
     }
-  
+    .edit-text {
+      color: blue;   
+      cursor: pointer;         
+      text-decoration: none;   
+    }
+    
+    .edit-text:hover {
+      text-decoration: underline; 
+    }
   
   header {
     display: flex;

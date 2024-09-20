@@ -8,6 +8,9 @@ import { BlogPost } from '../models/BlogPost';
   providedIn: 'root'
 })
 export class blogPostService {
+ // updateBlogPost(post: BlogPost & { isEditing?: boolean; }) {
+  //  throw new Error('Method not implemented.');
+ // }
   private apiUrl = 'http://localhost:8080/api/posts';
 
   constructor(private http: HttpClient) {}
@@ -35,5 +38,9 @@ export class blogPostService {
   // Delete a blog post by ID
   deleteBlogPost(id: number): Observable<string> {
     return this.http.delete<string>(`${this.apiUrl}/${id}`);
-  }
+  } 
+  //Update a Blog post by id 
+  updateBlogPost(blogPost: BlogPost): Observable<BlogPost>{
+    return this.http.put<BlogPost>('${this.apiUrl}/${id}', blogPost);
+  } 
 }
