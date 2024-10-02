@@ -1,29 +1,33 @@
 <div class="container">
-  <header>
+ <!-- <header>
     <h1>Mero Blog</h1>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">Categories</a>
+      <a href="http://localhost:4200/home">Home</a>
+      <a href="http://localhost:4200/add-post">Your post</a>
       <a href="#">About</a>
-      <a href="#">Contact</a>
+      <a href="#">Catagories</a>
       <a href="https://www.linkedin.com/in/m-khatri-58638a155/">LinkedIn</a>
       <a href="#">Facebook</a>
     </nav>
-  </header>
+  </header> -->
   
   <main class="main-content">
     <!-- Blog Posts Section -->
     <div class="blogs-main-page-articles">
-      <div *ngFor="let post of articles" class="article">
+      <div *ngFor="let post of articles" class="article-box">
+        <!-- Add the image here -->
+      <div class="post-image">
+        <img [src]="post.picture" alt="Post Image" class="post-image">
+      </div>
         <h2>{{ post.title }}</h2>
-        <p>By: {{ post.fullName }} | Date: {{ post.createdDate | date:'longDate' }}</p>
+        <p>Posted by: {{ post.fullName }} | Date: {{ post.createdDate | date:'long' }}</p>
          <!-- Edit Mode Toggle -->
          <span class="edit-text" (click)="post.isEditing = !post.isEditing">
           {{ post.isEditing ? 'Cancel' : 'Edit' }}
          </span>
         
         <!-- Display summary and toggle the full article -->
-        <p *ngIf="!post.showFullArticle">{{ post.content | slice: 0:150 }}...</p>
+        <p *ngIf="!post.showFullArticle">{{ post.content | slice: 0:300 }}...</p>
         
         <!-- Toggle the full article visibility -->
         <button (click)="toggleFullArticle(post)">
