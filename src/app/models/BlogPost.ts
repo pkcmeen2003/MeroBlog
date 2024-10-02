@@ -5,4 +5,5 @@ export interface BlogPost{
     createdDate: Date;    
     authorId: number;     
     fullName: string;
+    picture: string;
 }
