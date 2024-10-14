@@ -54,16 +54,23 @@ throw new Error('Method not implemented.');
   onSubmit(): void {
     if (this.addPostForm.valid) {
       const newPost: BlogPost = this.addPostForm.value;
+      
       this.blogPostService.saveBlogPost(newPost).subscribe(
         response => {
-          console.log('Post added successfully:', response);
-          // Navigate back to the homepage after successful submission
+          // Show the success alert
+          alert('Post added successfully!');
+  
+          // Redirect to home page after success
           this.router.navigate(['/home']);
         },
         error => {
+          // Handle the error if the post fails to add
           console.error('Error adding post:', error);
+          alert('Failed to add post.');
         }
       );
+    } else {
+      alert('Form is not valid. Please fill out all required fields.');
     }
   }
 }
