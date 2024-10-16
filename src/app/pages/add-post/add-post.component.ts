@@ -50,27 +50,25 @@ throw new Error('Method not implemented.');
       reader.readAsDataURL(input.files[0]);  // Read the uploaded file as a Data URL
     }
   }
-
   onSubmit(): void {
     if (this.addPostForm.valid) {
       const newPost: BlogPost = this.addPostForm.value;
-      
-      this.blogPostService.saveBlogPost(newPost).subscribe(
-        response => {
-          // Show the success alert
-          alert('Post added successfully!');
   
-          // Redirect to home page after success
-          this.router.navigate(['/home']);
+      this.blogPostService.saveBlogPost(newPost).subscribe({
+        next: (response: BlogPost) => {
+          console.log('Backend Response:', response);  // Log the response for debugging
+          if (response && response.id) {
+            alert('Post added successfully!');
+            this.router.navigate(['/home']);
+          } else {
+            alert('Failed to add post.');  // This should ideally not be reached if the post is saved correctly
+          }
         },
-        error => {
-          // Handle the error if the post fails to add
-          console.error('Error adding post:', error);
+        error: (err) => {
+          console.error('Error adding post:', err);
           alert('Failed to add post.');
         }
-      );
-    } else {
-      alert('Form is not valid. Please fill out all required fields.');
+      });
     }
   }
 }

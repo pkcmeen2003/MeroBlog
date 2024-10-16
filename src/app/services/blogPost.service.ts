@@ -31,8 +31,8 @@ export class blogPostService {
   }
 
   // Save a new blog post
-  saveBlogPost(blogPost: BlogPost): Observable<string> {
-    return this.http.post<string>(this.apiUrl, blogPost);
+  saveBlogPost(blogPost: BlogPost): Observable<BlogPost> {
+    return this.http.post<BlogPost>(this.apiUrl, blogPost);
   }
 
   // Delete a blog post by ID
