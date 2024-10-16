@@ -59,7 +59,7 @@ throw new Error('Method not implemented.');
           console.log('Backend Response:', response);  // Log the response for debugging
           if (response && response.id) {
             alert('Post added successfully!');
-            this.router.navigate(['/home']);
+            this.router.navigate(['/home']); // test
           } else {
             alert('Failed to add post.');  // This should ideally not be reached if the post is saved correctly
           }
