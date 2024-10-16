@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -24,9 +25,10 @@ public class BlogPost {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    private LocalDate createdDate;
+    private LocalDateTime createdDate;
 
     private Integer authorId;
 
     private String fullName;
+    private String picture;
 }

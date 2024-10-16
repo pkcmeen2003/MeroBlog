@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,12 +27,16 @@ public class BlogPostController {
         Optional<BlogPost> bp = blogPostService.getBlogPostById(id);
         return bp .map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
-    //Creating users
+    //Save posts
     // URL:  http://localhost:8080/api/posts
     @PostMapping
-    public ResponseEntity<String>saveBlogPost(@RequestBody BlogPost blogPost){
+    public ResponseEntity<BlogPost> saveBlogPost(@RequestBody BlogPost blogPost) {
+        if (blogPost.getCreatedDate() == null) {
+            blogPost.setCreatedDate(LocalDateTime.now());
+        }
         BlogPost newbp = blogPostService.saveBlogPost(blogPost);
-       return ResponseEntity.status(HttpStatus.CREATED).body("Blog post details added successfully");
+        System.out.println("Saved BlogPost: " + newbp);  // Log the new BlogPost
+        return ResponseEntity.status(HttpStatus.CREATED).body(newbp);
 
     }
     // URL:  http://localhost:8080/api/posts
