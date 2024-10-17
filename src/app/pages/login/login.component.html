@@ -1,0 +1,37 @@
+<main class="main">
+    <div class="content">
+      <div class="login-container">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="form-group">
+            <h4 style="color: grey; font-family: 'Times New Roman', Times, serif;">
+              <p>To view MeroBlog, please log in. If this is your first visit, sign up to access all the latest blogs.</p>
+            </h4>
+            <label for="userName">Username</label>
+            <input
+              type="text"
+              id="userName"
+              formControlName="userName"
+              placeholder="Enter your username"
+            />
+            
+          </div>
+  
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              formControlName="password"
+              placeholder="Enter your password"
+            />
+          </div>
+  
+          <div class="form-actions">
+            <button type="submit" class="login-btn">Login</button>
+            <button type="button" class="signup-btn" (click)="navigateToSignUp()">Sign up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+  <!-- Testing-->
