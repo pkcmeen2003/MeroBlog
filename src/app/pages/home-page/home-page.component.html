@@ -20,7 +20,7 @@
         <img [src]="post.picture" alt="Post Image" class="post-image">
       </div>
         <h2>{{ post.title }}</h2>
-        <p>Posted by: {{ post.fullName }} | Date: {{ post.createdDate | date:'MMMM d, y, h:mm:ss a z' }}</p>
+        <p>Posted by: {{ post.fullName }} | Date: {{ post.createdDate | date:'MMMM d, y' }}</p>
          <!-- Edit Mode Toggle -->
          <span class="edit-text" (click)="post.isEditing = !post.isEditing">
           {{ post.isEditing ? 'Cancel' : 'Edit' }}
